@@ -1,2 +1,2 @@
 # mob-behavior-overlay
-A mod.
+Ever wondered what a mob is up to? With the Mob Behavior Overlay Mod, you'll always know! This mod enhances your Minecraft experience by displaying helpful visual indicators for mobs in your world. See whether a mob is hostile, passive, or neutral, along with their current state — sleeping, idle, moving, or fleeing. Gain an edge by observing targeting directions and staying alert to potential threats. Whether you're exploring or in the heat of battle, Mob Behavior Overlay keeps you informed and in control!
