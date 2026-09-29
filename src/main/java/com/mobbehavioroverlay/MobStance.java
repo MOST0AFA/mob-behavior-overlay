@@ -2,6 +2,7 @@ package com.mobbehavioroverlay;
 
 import com.mobbehavioroverlay.config.OverlayConfig;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.Mob;
@@ -53,7 +54,7 @@ public enum MobStance {
 	 */
 	public static MobStance outlineFor(Entity self) {
 		OverlayConfig cfg = OverlayConfig.get();
-		if (!cfg.enabled || !self.level().isClientSide()) {
+		if (!cfg.enabled || !(self.level() instanceof ClientLevel)) {
 			return null;
 		}
 		Player player = Minecraft.getInstance().player;
