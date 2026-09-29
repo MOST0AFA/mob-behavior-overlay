@@ -12,4 +12,4 @@ Taming a wolf/cat/parrot/horse flips it from yellow to green; angering a neutral
 Only mobs within 24 blocks and in line of sight are outlined (no x‑ray through walls).
 
 ## Build
-Requires JDK 25. `gradle build` → `build/libs/mob-behavior-overlay-*.jar` → drop in `mods/` with Fabric Loader + Fabric API.
+Requires JDK 25 and Gradle 9.5.1+ (Loom 1.17). `gradle build` → `build/libs/mob-behavior-overlay-*.jar` → drop in `mods/` with Fabric Loader 0.19+ (Fabric API optional).

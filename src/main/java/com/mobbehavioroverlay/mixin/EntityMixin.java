@@ -39,7 +39,7 @@ public abstract class EntityMixin {
 			return null;
 		}
 		Player player = Minecraft.getInstance().player;
-		if (player == null || self.distanceToSqr(player) > RANGE_SQ || !player.hasLineOfSight(self)) {
+		if (player == null || self.distanceToSqr(player) > RANGE_SQ || self == player.getVehicle() || !player.hasLineOfSight(self)) {
 			return null;
 		}
 		return MobStance.of(self);

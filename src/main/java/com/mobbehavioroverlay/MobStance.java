@@ -2,7 +2,6 @@ package com.mobbehavioroverlay;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
@@ -33,12 +32,15 @@ public enum MobStance {
 		if (mob instanceof AbstractHorse horse && horse.isTamed()) {
 			return FRIENDLY;
 		}
+		// Check NeutralMob before Enemy: endermen and zombified piglins are both,
+		// and must be yellow until provoked.
+		if (mob instanceof NeutralMob neutral) {
+			// Anger time isn't always synced to the client, so also honor the
+			// synced "aggressive" flag (set while the mob is attacking).
+			return neutral.isAngry() || mob.isAggressive() ? HOSTILE : NEUTRAL;
+		}
 		if (mob instanceof Enemy) {
 			return HOSTILE;
-		}
-		if (mob instanceof NeutralMob neutral) {
-			// Neutral mobs turn red once angry.
-			return neutral.isAngry() ? HOSTILE : NEUTRAL;
 		}
 		return FRIENDLY;
 	}
