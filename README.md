@@ -9,7 +9,17 @@ Client-side Fabric mod for Minecraft 26.2 that puts a thin outline on nearby mob
 | Green  | Friendly: passive animals/villagers, and anything you have tamed |
 
 Taming a wolf/cat/parrot/horse flips it from yellow to green; angering a neutral mob flips it to red.
-Only mobs within 24 blocks and in line of sight are outlined (no x‑ray through walls).
+By default only mobs within 24 blocks and in line of sight are outlined (no x-ray through walls).
 
 ## Build
 Requires JDK 25 and Gradle 9.5.1+ (Loom 1.17). `gradle build` → `build/libs/mob-behavior-overlay-*.jar` → drop in `mods/` with Fabric Loader 0.19+ (Fabric API optional).
+
+## Settings
+Press **O** (rebindable under Controls → Mob Behavior Overlay) to open the settings screen:
+- Overlay on/off
+- Outline range slider (4–64 blocks)
+- "Only visible mobs" (line of sight) toggle
+- Hostile / Neutral / Friendly category toggles
+- **Choose mobs…** – per-mob on/off list with All on / All off
+
+Settings are saved to `config/mobbehavioroverlay.json`.

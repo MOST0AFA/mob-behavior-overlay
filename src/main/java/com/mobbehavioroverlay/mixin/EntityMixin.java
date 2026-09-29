@@ -1,6 +1,7 @@
 package com.mobbehavioroverlay.mixin;
 
 import com.mobbehavioroverlay.MobStance;
+import com.mobbehavioroverlay.config.OverlayConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -15,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  */
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-	private static final double RANGE_SQ = 24.0 * 24.0;
-
 	@Inject(method = "isCurrentlyGlowing", at = @At("RETURN"), cancellable = true)
 	private void mbo$outline(CallbackInfoReturnable<Boolean> cir) {
 		if (cir.getReturnValueZ() || mbo$stance() == null) {
@@ -35,13 +34,23 @@ public abstract class EntityMixin {
 
 	private MobStance mbo$stance() {
 		Entity self = (Entity) (Object) this;
-		if (!self.level().isClientSide()) {
+		OverlayConfig cfg = OverlayConfig.get();
+		if (!cfg.enabled || !self.level().isClientSide()) {
 			return null;
 		}
 		Player player = Minecraft.getInstance().player;
-		if (player == null || self.distanceToSqr(player) > RANGE_SQ || self == player.getVehicle() || !player.hasLineOfSight(self)) {
+		if (player == null || self == player.getVehicle()
+				|| self.distanceToSqr(player) > (double) cfg.range * cfg.range
+				|| !cfg.isMobEnabled(self.getType())) {
 			return null;
 		}
-		return MobStance.of(self);
+		MobStance stance = MobStance.of(self);
+		if (stance == null || !cfg.showsStance(stance)) {
+			return null;
+		}
+		if (cfg.requireLineOfSight && !player.hasLineOfSight(self)) {
+			return null;
+		}
+		return stance;
 	}
 }
