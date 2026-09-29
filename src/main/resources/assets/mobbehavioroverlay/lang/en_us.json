@@ -1,0 +1,14 @@
+{
+	"key.mobbehavioroverlay.open_config": "Open Mob Behavior Overlay settings",
+	"key.category.mobbehavioroverlay.main": "Mob Behavior Overlay",
+	"mobbehavioroverlay.config.title": "Mob Behavior Overlay",
+	"mobbehavioroverlay.config.enabled": "Overlay",
+	"mobbehavioroverlay.config.range": "Range: %s blocks",
+	"mobbehavioroverlay.config.line_of_sight": "Only visible mobs",
+	"mobbehavioroverlay.config.hostile": "Hostile",
+	"mobbehavioroverlay.config.neutral": "Neutral",
+	"mobbehavioroverlay.config.friendly": "Friendly",
+	"mobbehavioroverlay.config.choose_mobs": "Choose mobs...",
+	"mobbehavioroverlay.config.all_on": "All on",
+	"mobbehavioroverlay.config.all_off": "All off"
+}

@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "mobbehavioroverlay",
+	"version": "${version}",
+	"name": "Mob Behavior Overlay",
+	"description": "Thin colored outline on mobs: red = hostile/angry, yellow = neutral, green = friendly/tamed.",
+	"authors": ["MOST0AFA"],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["com.mobbehavioroverlay.MobBehaviorOverlay"]
+	},
+	"mixins": ["mobbehavioroverlay.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
