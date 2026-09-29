@@ -23,3 +23,11 @@ Press **O** (rebindable under Controls → Mob Behavior Overlay) to open the set
 - **Choose mobs…** – per-mob on/off list with All on / All off
 
 Settings are saved to `config/mobbehavioroverlay.json`.
+
+## Building in IntelliJ IDEA
+1. Install **JDK 25** (File → Project Structure → SDKs → Add SDK → Download JDK → 25).
+2. File → Open → select this folder → "Trust project". IntelliJ imports it as a Gradle project.
+3. Settings → Build, Execution, Deployment → Build Tools → Gradle: set **Gradle JVM** to JDK 25.
+4. Wait for the Gradle sync (first run downloads Minecraft, ~few minutes).
+5. Open the Gradle tool window → Tasks → build → **build**. The jar is `build/libs/mob-behavior-overlay-1.0.0.jar` (not the `-sources` one).
+6. To test in-game: Tasks → fabric → **runClient** (or run `./gradlew runClient`).
