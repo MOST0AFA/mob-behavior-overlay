@@ -3,7 +3,6 @@ package com.mobbehavioroverlay.gui;
 import com.mobbehavioroverlay.config.OverlayConfig;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -30,7 +29,8 @@ public class ConfigScreen extends Screen {
 		int x = this.width / 2 - W / 2;
 		int y = Math.max(28, this.height / 2 - 4 * GAP - 8);
 
-		addRenderableWidget(new StringWidget(x, 12, W, 9, this.title, this.font).alignCenter());
+		// StringWidget#alignCenter was removed in 1.21.9+, so use an inert button as the title.
+		addRenderableWidget(Button.builder(this.title, b -> { }).bounds(x, 8, W, H).build()).active = false;
 
 		addToggle(x, y, "enabled", () -> cfg.enabled, v -> cfg.enabled = v);
 		addRenderableWidget(new RangeSlider(x, y += GAP, cfg));

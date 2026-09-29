@@ -2,7 +2,6 @@ package com.mobbehavioroverlay.gui;
 
 import com.mobbehavioroverlay.config.OverlayConfig;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
@@ -51,7 +50,7 @@ public class MobSelectScreen extends Screen {
 		page = Math.max(0, Math.min(page, pages - 1));
 
 		int left = this.width / 2 - (cols * (colW + 4) - 4) / 2;
-		addRenderableWidget(new StringWidget(this.width / 2 - 100, 12, 200, 9, this.title, this.font).alignCenter());
+		addRenderableWidget(Button.builder(this.title, b -> { }).bounds(this.width / 2 - 100, 4, 200, BTN_H).build()).active = false;
 
 		int start = page * perPage;
 		for (int i = 0; i < perPage && start + i < mobs.size(); i++) {
